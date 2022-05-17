@@ -9,7 +9,7 @@ import { Security } from "../utils/Security.util";
 })
 export class DataService {
 
-    public url = 'http://localhost:3001'
+    public url = 'https://seja-o-heroi.herokuapp.com'
 
     constructor(private http: HttpClient) { }
 
