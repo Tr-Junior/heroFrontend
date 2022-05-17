@@ -1,0 +1,72 @@
+<div class="uk-grid-collapse uk-child-width-expand@s uk-flex-center uk-height-1-1@m  uk-width-1-1@m uk-grid-match uk-margin-large-top"
+    uk-grid>
+    <div class="uk-width-1-2@m uk-margin-large-top">
+        <div class="uk-text-center ">
+            <img src="assets/img/logo5.png" class="uk-align-center uk-width-1-2" alt="seja o heroi">
+        </div>
+        <div>
+            <div class="uk-text-large uk-text-center">Faça seu cadastro, entre na plataforma e ajude pessoas a
+                encontrarem os casos da sua ONG.</div>
+        </div>
+        <div class="uk-margin-medium-top uk-text-center">
+            <a class="uk-text-default uk-link-text uk-link-heading" [routerLink]="['/']" *ngIf="!busy">
+                <span class="uk-icon" uk-icon="icon: arrow-left; ratio: 1.5"></span>Voltar</a>
+        </div>
+    </div>
+    <app-loading *ngIf="busy"></app-loading>
+    <div class="uk-width-1-2@m uk-margin-large-top">
+        <div class="uk-card uk-card-body">
+            <form [formGroup]="form" *ngIf="!busy">
+                <div class="uk-text-center">
+                    <div class=" uk-text-large">Cadastre-se</div>
+                    <div class="uk-margin-small-top uk-inline uk-width-1-1@m">
+                        <span class="uk-form-icon" uk-icon="icon: user"></span>
+                        <input class="uk-input uk-form-large uk-background-muted uk-border-rounded"
+                            formControlName="name" type="text" placeholder="Nome da ONG"
+                            [ngClass]="{'uk-form-danger': (!form.controls['name'].valid && !form.controls['name'].pristine) }">
+                    </div>
+                    <div class="uk-margin-small-top uk-inline uk-width-1-1@m">
+                        <span class="uk-form-icon" uk-icon="icon: mail"></span>
+                        <input class="uk-input uk-form-large uk-background-muted uk-border-rounded"
+                            formControlName="email" type="text" placeholder="Email"
+                            [ngClass]="{'uk-form-danger': (!form.controls['email'].valid && !form.controls['email'].pristine) }">
+                    </div>
+                    <div class="uk-margin-small-top uk-inline uk-width-1-1@m ">
+                        <span class="uk-form-icon" uk-icon="icon: lock"></span>
+                        <input class="uk-input uk-form-large uk-background-muted uk-border-rounded"
+                            formControlName="password" type="password" placeholder="Senha"
+                            [ngClass]="{'uk-form-danger': (!form.controls['password'].valid && !form.controls['password'].pristine) }">
+                    </div>
+                    <div class="uk-margin-small-top uk-inline uk-width-1-1@m ">
+                        <span class="uk-form-icon" uk-icon="icon: whatsapp"></span>
+                        <input class="uk-input uk-form-large uk-background-muted uk-border-rounded"
+                            formControlName="phone" type="text" placeholder="WhatsApp"
+                            [ngClass]="{'uk-form-danger': (!form.controls['phone'].valid && !form.controls['phone'].pristine) }"
+                            prefix="+55 " mask="(00)00000-0000">
+                    </div>
+                    <div class="uk-grid uk-grid-small">
+                        <div class="uk-margin-small-top uk-width-expand@m uk-inline ">
+                            <span class=" uk-form-icon uk-padding-small" uk-icon="icon:  location"></span>
+                            <input
+                                class="uk-input uk-form-large uk-background-muted uk-border-rounded uk-text-capitalize"
+                                formControlName="city" type="text" placeholder="Cidade"
+                                [ngClass]="{'uk-form-danger': (!form.controls['city'].valid && !form.controls['city'].pristine) }">
+                        </div>
+                        <div class="uk-margin-small-top uk-inline uk-width-1-5@m">
+                            <span class="uk-form-icon uk-padding-small" uk-icon="icon:  world"></span>
+                            <input
+                                class="uk-input uk-form-large uk-background-muted uk-border-rounded uk-text-uppercase"
+                                formControlName="uf" type="text" placeholder="UF"
+                                [ngClass]="{'uk-form-danger': (!form.controls['uf'].valid && !form.controls['uf'].pristine) }">
+                        </div>
+                    </div>
+                    <div class="uk-margin-small uk-text-right">
+                        <button class="uk-button uk-width-1-1 uk-button-primary uk-button-default uk-border-rounded"
+                            type="submit" [disabled]="form.invalid" (click)="submit()">Cadastrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

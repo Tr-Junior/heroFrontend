@@ -1,0 +1,126 @@
+<div class="uk-background-primary uk-light">
+    <div class="uk-container">
+        <nav class="uk-navbar-container uk-navbar-transparent uk-margin" uk-navbar>
+            <div class="uk-navbar-left">
+                <a class="uk-navbar-item uk-logo">
+                    <img src="assets/img/logo6.png" class="" width="150" alt="seja o heroi">
+                </a>
+                <ul class="uk-navbar-nav">
+                    <a class="uk-text-default uk-link-heading ">Bem Vindo, {{ong.name}}</a>
+                </ul>
+            </div>
+            <div class="uk-navbar-right">
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a class="uk-text-default uk-text-middle uk-link-text uk-link-heading" href="#modal-example"
+                            uk-toggle>
+                            <span class="uk-icon" uk-icon="icon: plus">Novo Caso </span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="uk-navbar-nav">
+                    <li>
+                        <a class="uk-text-default uk-text-middle uk-link-text uk-link-heading" (click)="sair()"
+                            [routerLink]="['/']">
+                            <span class="uk-icon" uk-icon="icon: sign-out">Sair </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<div class="uk-container uk-margin-medium-top">
+    <div class="uk-text-center uk-text-large" *ngIf="listar.length == 0">Não há Casos cadastrados</div>
+    <div uk-grid>
+        <div *ngFor="let caso of listar" class=" uk-width-1-2@m">
+            <div class="uk-card uk-card-small uk-card-default uk-height-1-1@m uk-card-hover uk-border-rounded">
+                <div class=" uk-card-header">
+                    <div class="uk-child-width-expand" uk-grid>
+                        <div class="uk-align-left uk-margin-remove">
+                            <strong>Caso:</strong>
+                            <li class="uk-text-default">{{caso.title}}</li>
+                        </div>
+                        <div class="">
+                            <a class="uk-text-default uk-link-text uk-link-heading uk-align-right" uk-icon="icon: trash"
+                                [swal]="{
+                                title: 'atenção',
+                                text: 'Deseja realmente excluir o caso: '+ caso.title + '?',
+                                showDenyButton: true,
+                                denyButtonText: 'Não',
+                                confirmButtonText: 'Sim',
+                                icon: 'warning'
+                            }" (confirm)="deleteCaso(caso._id)"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-card-body uk-height-small overflow" uk-grid>
+                    <strong>Descrição:</strong>
+                    <p>{{caso.description}}</p>
+                </div>
+                <div class="uk-card-footer uk-margin-remove" uk-grid>
+                    <strong>Valor:</strong>
+                    <p>
+                        {{caso.value | currency: 'BRL':'':'':'fr'}}
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-example" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <div class="uk-grid-collapse uk-child-width-expand@s uk-flex-center uk-height-1-1@m  uk-width-1-1@m uk-grid-match"
+            uk-grid>
+            <div class="uk-width-1-2@m ">
+                <div class="uk-text-center ">
+                    <img src="assets/img/logo5.png" class="uk-align-center uk-width-1-2" alt="seja o heroi">
+                </div>
+                <div>
+                    <div class="uk-text-large uk-text-center">Descreva o caso detalhadamente para encontrar um herói
+                        para
+                        resolver isso.</div>
+                </div>
+                <div class="uk-margin-medium-top uk-text-center">
+                    <a class="uk-text-default uk-link-text uk-link-heading uk-modal-close" (click)="resetForm()">
+                        <span class="uk-icon" uk-icon="icon: arrow-left; ratio: 1.5"></span>Voltar</a>
+                </div>
+            </div>
+            <app-loading *ngIf="busy"></app-loading>
+            <div class="uk-width-1-2@m uk-margin-large-top">
+                <div class="uk-card uk-card-body">
+                    <form [formGroup]="form" *ngIf="!busy">
+                        <div class="uk-text-center">
+                            <div class=" uk-text-large">Cadastrar novo caso</div>
+                            <div class="uk-margin-small-top uk-inline uk-width-1-1@m">
+                                <input class="uk-input uk-form-large uk-background-muted uk-border-rounded"
+                                    formControlName="title" type="text" placeholder="Título do caso"
+                                    required="{'uk-form-danger': (!form.controls['title'].valid && !form.controls['title'].pristine) }">
+                            </div>
+                            <div class="uk-margin-small-top uk-inline uk-width-1-1@m">
+                                <textarea
+                                    class="uk-textarea uk-text-middle uk-form-large uk-background-muted uk-border-rounded"
+                                    rows="5" placeholder="Descrição" formControlName="description" required
+                                    [ngClass]="{'uk-form-danger': (!form.controls['description'].valid && !form.controls['description'].pristine) }"></textarea>
+                            </div>
+                            <div class="uk-margin-small-top uk-inline uk-width-1-1@m ">
+                                <input class="uk-input uk-form-large uk-background-muted uk-border-rounded"
+                                    formControlName="value" type="text" placeholder="Valor" required
+                                    [ngClass]="{'uk-form-danger': (!form.controls['value'].valid && !form.controls['value'].pristine)}"
+                                    currencyMask>
+                            </div>
+                            <div class="uk-margin-small uk-text-right">
+                                <button
+                                    class="uk-button uk-width-1-1 uk-button-primary uk-button-default uk-border-rounded uk-modal-close"
+                                    type="submit" (click)="submit()" *ngIf="!busy">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

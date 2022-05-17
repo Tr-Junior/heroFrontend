@@ -1,0 +1,42 @@
+<div class="uk-grid-collapse uk-child-width-expand@s uk-flex-center uk-height-1-1@m  uk-width-1-1@m uk-grid-match uk-margin-large-top"
+    uk-grid>
+    <div class="uk-width-1-2@m uk-margin-large-top">
+        <div class="uk-text-center ">
+            <img src="assets/img/logo5.png" class="uk-align-center uk-width-1-2" alt="seja o heroi">
+        </div>
+        <div>
+            <div class="uk-text-large uk-text-center">Descreva o caso detalhadamente para encontrar um herói para
+                resolver isso.</div>
+        </div>
+        <div class="uk-margin-medium-top uk-text-center">
+            <span class="uk-icon" uk-icon="icon: arrow-left; ratio: 1.5"></span>
+            <a class="uk-text-default uk-link-text uk-link-heading" [routerLink]="['/selectIncidents']">Voltar</a>
+        </div>
+    </div>
+    <div class="uk-width-1-2@m uk-margin-large-top">
+        <div class="uk-card uk-card-body">
+            <form action="">
+                <div class="uk-text-center">
+                    <div class=" uk-text-large">Cadastrar novo caso</div>
+                    <div class="uk-margin-small-top uk-inline uk-width-1-1@m">
+                        <input class="uk-input uk-form-large uk-background-muted uk-border-rounded"
+                            formControlName="name" type="text" placeholder="Título do caso">
+                    </div>
+                    <div class="uk-margin-small-top uk-inline uk-width-1-1@m">
+                        <textarea class="uk-textarea uk-text-middle uk-form-large uk-background-muted uk-border-rounded"
+                            rows="5" placeholder="Descrição"></textarea>
+                    </div>
+                    <div class="uk-margin-small-top uk-inline uk-width-1-1@m ">
+                        <input class="uk-input uk-form-large uk-background-muted uk-border-rounded"
+                            formControlName="text" type="text" placeholder="Valor">
+                    </div>
+                    <div class="uk-margin-small uk-text-right">
+                        <button
+                            class="uk-button uk-width-1-1 uk-button-primary uk-button-default uk-border-rounded">Entrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
