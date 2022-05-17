@@ -45,8 +45,8 @@ export class LoginComponent implements OnInit {
             this.setOng(data.ong, data.token);
           },
           (err) => {
-            localStorage.clear();
             this.toastr.error(err.error.message);
+            localStorage.clear();
             this.busy = false;
           }
         );

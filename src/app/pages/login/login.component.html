@@ -3,6 +3,7 @@
         <div class="uk-text-center ">
             <img src="assets/img/logo5.png" class="uk-align-center uk-width-1-2" alt="seja o heroi">
         </div>
+        <app-loading *ngIf="busy"></app-loading>
         <div class="uk-card uk-card-body">
             <form [formGroup]="form" action="" *ngIf="!busy">
                 <div class=" uk-text-center">
@@ -21,7 +22,7 @@
                     </div>
                     <div class="uk-margin-small uk-text-right">
                         <button class="uk-button uk-width-1-1 uk-button-primary uk-button-default uk-border-rounded"
-                            (click)="submit()">Entrar</button>
+                            (click)="submit()" *ngIf="!busy">Entrar</button>
                     </div>
                 </div>
             </form>

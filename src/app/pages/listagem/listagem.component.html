@@ -12,17 +12,14 @@
             <div class="uk-navbar-right">
                 <ul class="uk-navbar-nav">
                     <li>
-                        <a class="uk-text-default uk-text-middle uk-link-text uk-link-heading" href="#modal-example"
-                            uk-toggle>
-                            <span class="uk-icon" uk-icon="icon: plus">Novo Caso </span>
+                        <a class="uk-text-default uk-text-middle uk-link-text uk-link-heading" href="#modal" uk-toggle>
+                            <span class="uk-icon" uk-icon="icon: plus">Novo </span>
                         </a>
                     </li>
-                </ul>
-                <ul class="uk-navbar-nav">
                     <li>
                         <a class="uk-text-default uk-text-middle uk-link-text uk-link-heading" (click)="sair()"
                             [routerLink]="['/']">
-                            <span class="uk-icon" uk-icon="icon: sign-out">Sair </span>
+                            <span class="uk-icon " uk-icon="icon: sign-out">Sair </span>
                         </a>
                     </li>
                 </ul>
@@ -70,7 +67,7 @@
     </div>
 </div>
 
-<div id="modal-example" uk-modal>
+<div id="modal" uk-modal>
     <div class="uk-modal-dialog uk-modal-body">
         <div class="uk-grid-collapse uk-child-width-expand@s uk-flex-center uk-height-1-1@m  uk-width-1-1@m uk-grid-match"
             uk-grid>
