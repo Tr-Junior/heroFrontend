@@ -36,8 +36,8 @@
                 <div class=" uk-card-header">
                     <div class="uk-child-width-expand" uk-grid>
                         <div class="uk-align-left uk-margin-remove">
-                            <strong>Caso:</strong>
-                            <li class="uk-text-default">{{caso.title}}</li>
+                            <strong>Caso: </strong>
+                            <span class="uk-text-default">{{caso.title}}</span>
                         </div>
                         <div class="">
                             <a class="uk-text-default uk-link-text uk-link-heading uk-align-right" uk-icon="icon: trash"
@@ -52,15 +52,15 @@
                         </div>
                     </div>
                 </div>
-                <div class="uk-card-body uk-height-small overflow" uk-grid>
+                <div class="uk-card-body uk-height-small overflow " uk-grid>
                     <strong>Descrição:</strong>
-                    <p>{{caso.description}}</p>
+                    <span>{{caso.description}}</span>
                 </div>
                 <div class="uk-card-footer uk-margin-remove" uk-grid>
                     <strong>Valor:</strong>
-                    <p>
-                        {{caso.value | currency: 'BRL':'symbol':'':'fr'}}
-                    </p>
+                    <span>
+                        R$ {{caso.value | currency: 'BRL':'':'':'fr'}}
+                    </span>
                 </div>
             </div>
         </div>
@@ -94,7 +94,7 @@
                             <div class="uk-margin-small-top uk-inline uk-width-1-1@m">
                                 <input class="uk-input uk-form-large uk-background-muted uk-border-rounded"
                                     formControlName="title" type="text" placeholder="Título do caso"
-                                    required="{'uk-form-danger': (!form.controls['title'].valid && !form.controls['title'].pristine) }">
+                                    [ngClass]="{'uk-form-danger': (!form.controls['title'].valid && !form.controls['title'].pristine) }">
                             </div>
                             <div class="uk-margin-small-top uk-inline uk-width-1-1@m">
                                 <textarea
