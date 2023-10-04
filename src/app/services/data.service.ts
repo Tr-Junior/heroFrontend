@@ -8,6 +8,7 @@ import { environment } from "src/environments/environment";
 @Injectable({
   providedIn: 'root'
 })
+
 export class DataService {
 
   public API = `${environment.API}`;
@@ -21,26 +22,26 @@ export class DataService {
 
   }
   create(data: any) {
-    return this.http.post(`${this.url}/ongs/cadastro`, data);
+    return this.http.post(`${this.API}/ongs/cadastro`, data);
   }
 
   createCaso(data: any) {
-    return this.http.post(`${this.url}/incidents/novo`, data, { headers: this.composeHeaders() });
+    return this.http.post(`${this.API}/incidents/novo`, data, { headers: this.composeHeaders() });
   }
 
   getCaso(ong: any): Observable<any> {
-    return this.http.get<Caso[]>(`${this.url}/incidents/selectIncidents/` + ong, { headers: this.composeHeaders() });
+    return this.http.get<Caso[]>(`${this.API}/incidents/selectIncidents/` + ong, { headers: this.composeHeaders() });
   }
   deleteCaso(id: any): Observable<any> {
-    return this.http.delete(`${this.url}/incidents/deletIncident/` + id, { headers: this.composeHeaders() })
+    return this.http.delete(`${this.API}/incidents/deletIncident/` + id, { headers: this.composeHeaders() })
   }
 
   authenticate(data: any) {
-    return this.http.post(`${this.url}/ongs/authenticate`, data);
+    return this.http.post(`${this.API}/ongs/authenticate`, data);
   }
 
   refreshToken() {
-    return this.http.post(`${this.url}/ongs/refresh-token`, null, { headers: this.composeHeaders() });
+    return this.http.post(`${this.API}/ongs/refresh-token`, null, { headers: this.composeHeaders() });
   }
 
 }
